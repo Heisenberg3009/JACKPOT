@@ -1,3 +1,12 @@
+//What's the core features of this application?
+//1. Deposit some money.
+//2. Determine the number of lines to bet on
+//3. Collect a bet amount.
+//4. Spin the slot machine
+//5. Check if the user won.
+//6. Give user their winnings.
+//7. Play again.
+
 /*
 
 Step 1: Initialize nodejs using npm init.
