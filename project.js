@@ -18,3 +18,16 @@ terminal. In other words, it allows you to ask users for input and wait for thei
 response without needing complex asynchronous code.
 
 */
+
+//Step 1 - deposit money function.
+//Function Declaration
+/*
+function deposit (){
+
+}
+*/
+//Arrow Function
+
+const deposit = () => {
+  print("Just a fluff!");
+};
