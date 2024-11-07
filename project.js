@@ -79,7 +79,7 @@ const deposit = () => {
     const numberDepositAmount = parseFloat(depositAmount);
 
     if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
-      console.log("Invalid deposit amount, try agin.");
+      console.log("Invalid deposit amount, try again.");
     } else {
       return numberDepositAmount;
     }
@@ -93,33 +93,30 @@ break the loop.
 //Step 4: Get the number of lines
 const getNumberOfLines = () => {
   while (true) {
-    const lines = prompt("Enter the number of lines to bet on (1 - 3): ");
-    const numberLines = parseFloat(lines);
+    const lines = prompt("Enter the number of lines to bet on (1-3): ");
+    const numberOfLines = parseFloat(lines);
 
-    if (isNaN(numberLines) || numberLines <= 0 || numberLines > 3) {
-      console.log("Invalid number of lines, try agin.");
+    if (isNaN(numberOfLines) || numberOfLines <= 0 || numberOfLines > 3) {
+      console.log("Invalid number of lines, try again.");
     } else {
-      return numberLines;
+      return numberOfLines;
     }
   }
 };
-
 //Step 5: Get the bet from the user
 //Since the bet is based off number of lines, it will affect the maximum bet. Hence when the bet is place, the maximum bet cannot be greater than the  overall total balance.
 const getBet = (balance, lines) => {
   while (true) {
     const bet = prompt("Enter the bet per line: ");
     const numberBet = parseFloat(bet);
-    const totalBet = numberBet * lines;
 
     if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance / lines) {
-      console.log("Invalid bet, try agin.");
+      console.log("Invalid bet, try again.");
     } else {
       return numberBet;
     }
   }
 };
-
 //Step 7: Spin the slot machine
 //Here => for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)
 //const slot = () => { ... } : Since it’s an arrow function, it has no 'this' binding and is designed to execute a block of code when called.
@@ -129,23 +126,34 @@ const getBet = (balance, lines) => {
 //.push in JS works the same as .append() in other languages.
 const spin = () => {
   const symbols = [];
+  //An empty array, symbols, is created to store symbols based on their respective counts, as defined in SYMBOLS_COUNT.
   for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
-    // console.log(symbol, count);
     for (let i = 0; i < count; i++) {
       symbols.push(symbol);
     }
   }
-  //console.log(symbols);
-  const reels = [[], [], []];
-  for (let i = 0; i < COLS; i++) {
-    for (let j = 0; j < ROWS; j++) {}
-  }
-};
 
-//spin();
+  const reels = [];
+  for (let i = 0; i < COLS; i++) {
+    reels.push([]);
+    const reelSymbols = [...symbols];
+    for (let j = 0; j < ROWS; j++) {
+      const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+      const selectedSymbol = reelSymbols[randomIndex];
+      reels[i].push(selectedSymbol);
+      reelSymbols.splice(randomIndex, 1);
+    }
+  }
+
+  return reels;
+};
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
 //To check progress
 //console.log(depositAmount);
+
+//Check if code works till now.
+const reels = spin();
+console.log(reels);
