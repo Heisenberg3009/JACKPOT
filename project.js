@@ -53,22 +53,62 @@ This prompt function can now be used to prompt the user for input.
 
 //Step 1 - deposit money function.
 //Function Declaration
+
 /*
 function deposit (){
 
 }
 */
-//Arrow Function
-//parseFloat will take a string and convert it to its floating point
-//value. If the user entered a string that is not a number, then
-//the function will return NaN.
-const deposit = () => {
-  const depositAmount = prompt("Enter a deposit amount: ");
-  const numberDepositAmount = parseFloat(depositAmount);
 
-  if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
-    console.log("Invalid deposit amount, try agin.");
+/*
+Arrow Function
+parseFloat will take a string and convert it to its floating point
+value. If the user entered a string that is not a number, then the 
+function will return NaN.
+While true -  basically an infinite loop, we will continue to do this.
+So, we will ask the user to enter a number, check if it is a 
+number, then 
+*/
+const deposit = () => {
+  while (true) {
+    const depositAmount = prompt("Enter a deposit amount: ");
+    const numberDepositAmount = parseFloat(depositAmount);
+
+    if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
+      console.log("Invalid deposit amount, try agin.");
+    } else {
+      return numberDepositAmount;
+    }
+  }
+};
+//Step 2: Get the number of lines
+const getNumberOfLines = () => {
+  while (true) {
+    const lines = prompt("Enter the number of lines to bet on (1 - 3): ");
+    const numberLines = parseFloat(lines);
+
+    if (isNaN(numberLines) || numberLines <= 0 || numberLines > 3) {
+      console.log("Invalid number of lines, try agin.");
+    } else {
+      return numberLines;
+    }
   }
 };
 
-deposit();
+//Step 3: Get the bet from the user
+const getBet = (balance) => {
+    while (true) {
+        const bet = prompt("Enter the amount to bet: ");
+        const numberBet = parseFloat(bet);
+    
+        if (isNaN(numberBet) || numberBet <= 0 || numberBet > 3) {
+          console.log("Invalid bet, try agin.");
+        } else {
+          return numberBet;
+        }
+};
+
+let balance = deposit();
+const numberOfLines = getNumberOfLines();
+//To check progress
+//console.log(depositAmount);
