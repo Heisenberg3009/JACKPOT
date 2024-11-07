@@ -135,10 +135,11 @@ const spin = () => {
       symbols.push(symbol);
     }
   }
-  console.log(symbols);
+  //console.log(symbols);
+  const reels = [[], [], []];
 };
 
-spin();
+//spin();
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
