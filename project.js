@@ -7,6 +7,27 @@
 //6. Give user their winnings.
 //7. Play again.
 
+//Step 6 - Global Variables
+const ROWS = 3;
+const COLS = 3;
+
+//We are using Snake Case here, since it's in all caps.
+//We are declaring two JS object with four parameters each.
+//SYMBOLS_COUNT is for declaring the number of occurrences of each parameter.
+//SYMBOLS_VALUES is for declaring the weight and value of each parameter.
+const SYMBOLS_COUNT = {
+  A: 2,
+  B: 4,
+  C: 6,
+  D: 8,
+};
+
+const SYMBOLS_VALUES = {
+  A: 5,
+  B: 4,
+  C: 3,
+  D: 2,
+};
 /*
 
 Step 1: Initialize nodejs using npm init.
@@ -51,6 +72,7 @@ function deposit (){
 */
 
 //Arrow Function:
+//We are using camel case here, as it is the usual way of representing JS names.
 const deposit = () => {
   while (true) {
     const depositAmount = prompt("Enter a deposit amount: ");
@@ -68,7 +90,7 @@ parseFloat will take a string and convert it to its floating point value. If the
 While true -  basically an infinite loop, we will continue to do this. So, we will ask the user to enter a number, then check if it is a number. If it is, we will then 
 break the loop.
 */
-//Step 2: Get the number of lines
+//Step 4: Get the number of lines
 const getNumberOfLines = () => {
   while (true) {
     const lines = prompt("Enter the number of lines to bet on (1 - 3): ");
@@ -82,7 +104,7 @@ const getNumberOfLines = () => {
   }
 };
 
-//Step 3: Get the bet from the user
+//Step 5: Get the bet from the user
 //Since the bet is based off number of lines, it will affect the maximum bet. Hence when the bet is place, the maximum bet cannot be greater than the  overall total balance.
 const getBet = (balance, lines) => {
   while (true) {
@@ -95,6 +117,19 @@ const getBet = (balance, lines) => {
     } else {
       return numberBet;
     }
+  }
+};
+
+//Step 7: Spin the slot machine
+//Here => for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)
+//const slot = () => { ... } : Since it’s an arrow function, it has no 'this' binding and is designed to execute a block of code when called.
+//for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)) { ... }
+//This line is a for...of loop, which iterates over the entries of SYMBOLS_COUNT.
+// Object.entries(SYMBOLS_COUNT) returns an array of key-value pairs from the SYMBOLS_COUNT object.
+const slot = () => {
+  const symbols = [];
+  for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)) {
+    console.log(symbol, count, counts);
   }
 };
 
