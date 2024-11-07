@@ -126,12 +126,19 @@ const getBet = (balance, lines) => {
 //for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)) { ... }
 //This line is a for...of loop, which iterates over the entries of SYMBOLS_COUNT.
 // Object.entries(SYMBOLS_COUNT) returns an array of key-value pairs from the SYMBOLS_COUNT object.
-const slot = () => {
+//.push in JS works the same as .append() in other languages.
+const spin = () => {
   const symbols = [];
-  for (const [symbol, count, counts] of Object.entries(SYMBOLS_COUNT)) {
-    console.log(symbol, count, counts);
+  for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+    // console.log(symbol, count);
+    for (let i = 0; i < count; i++) {
+      symbols.push(symbol);
+    }
   }
+  console.log(symbols);
 };
+
+spin();
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
