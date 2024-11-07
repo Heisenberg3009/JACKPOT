@@ -137,6 +137,9 @@ const spin = () => {
   }
   //console.log(symbols);
   const reels = [[], [], []];
+  for (let i = 0; i < COLS; i++) {
+    for (let j = 0; j < ROWS; j++) {}
+  }
 };
 
 //spin();
