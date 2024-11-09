@@ -126,21 +126,32 @@ const getBet = (balance, lines) => {
 //.push in JS works the same as .append() in other languages.
 const spin = () => {
   const symbols = [];
+  //We generated an array with all the available symbols to  pick from.
   //An empty array, symbols, is created to store symbols based on their respective counts, as defined in SYMBOLS_COUNT.
   for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
     for (let i = 0; i < count; i++) {
       symbols.push(symbol);
     }
   }
-
+  //We have a temporary array containing the three spinning reels. They will hold each column of reel.
+  //If we know we have 3 columns, we could have declared const reels = [[],[],[]]. But if we want to make a generalized code, we will declare like this:
   const reels = [];
   for (let i = 0; i < COLS; i++) {
+    //This is done to include a new array space every time there is a new column.
     reels.push([]);
+    //We now copy all of the available symbols inside of the for loop.
+    //Remember we cannot remove the symbols from the available, we should have a unique array to pick from for this specific reel.
     const reelSymbols = [...symbols];
+    //Then we loop through all of the rows.
     for (let j = 0; j < ROWS; j++) {
+      //Here, we randomly pick a symbol, and push it into the array.
+
+      //Now, we randomly select whatever symbol is at that index.
       const randomIndex = Math.floor(Math.random() * reelSymbols.length);
       const selectedSymbol = reelSymbols[randomIndex];
+      //We push that into the current reel that we are working on.
       reels[i].push(selectedSymbol);
+      //We remove from the selected symbols, so that we do not select it again.
       reelSymbols.splice(randomIndex, 1);
     }
   }
@@ -154,6 +165,6 @@ const bet = getBet(balance, numberOfLines);
 //To check progress
 //console.log(depositAmount);
 
-//Check if code works till now.
+//To check if code works till now.
 const reels = spin();
 console.log(reels);
