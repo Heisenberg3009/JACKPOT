@@ -144,10 +144,9 @@ const spin = () => {
     const reelSymbols = [...symbols];
     //Then we loop through all of the rows.
     for (let j = 0; j < ROWS; j++) {
-      //Here, we randomly pick a symbol, and push it into the array.
-
-      //Now, we randomly select whatever symbol is at that index.
+      //We generate the random index.
       const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+      //Now, we randomly select whatever symbol is at that index.
       const selectedSymbol = reelSymbols[randomIndex];
       //We push that into the current reel that we are working on.
       reels[i].push(selectedSymbol);
